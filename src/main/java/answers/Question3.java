@@ -18,7 +18,7 @@ public class Question3 {
             } else total -= 1;
         }
           
-		return -1;
+		return total;
 	}
 
 }
