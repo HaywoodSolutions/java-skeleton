@@ -17,7 +17,7 @@ public class Question1 {
         for (int z = 0; z <= portfolios.length - 1; z++) {
             for (int y = portfolios.length - 1; y >= 0; y--) {
                 for (int i = 0; i <= 15 ; i++) {
-                    if ((finalPortfolio[z][i] == finalPortfolio[y][i]) && ((finalPortfolio[z][i] == 1) | (finalPortfolio[y][i] == 0))){
+                    if ((finalPortfolio[z][i] == finalPortfolio[y][i]) && ((finalPortfolio[z][i] == 1) || (finalPortfolio[y][i] == 0))){
                         binaryList.add(0);
                     } else {
                         binaryList.add(1);
