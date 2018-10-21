@@ -1,21 +1,15 @@
 package answers;
-import java.util.ArrayList; 
-import java.util.Arrays;
-import java.util.List;
+import java.util.Collections;
+import java.util.ArrayList;
 
 public class Question1 {
     
     public static int bestMergedPortfolio(int[] portfolios) {
-        int [][] finalPortfolio = new int [portfolios.length][16];
-        for (int x = 0; x <= portfolios.length - 1; x++) {
-            int conversionIndex = 32768;
-            for (int i = 15; i >= 0; i--) {
-                if ((portfolios[x] - conversionIndex) >= 0) {
-                    portfolios[x] = portfolios[x] - conversionIndex;
-                    finalPortfolio[x][i] = 1;
-                }
-                conversionIndex = conversionIndex / 2;
-            }
+        ArrayList<Integer> FinalPortfolio = new ArrayList<Integer>();
+        for(int p1=0; p1<portfolios.length; p1++) {
+           for(int p2=p1+1; p2<portfolios.length; p1++) {
+               FinalPortfolio.add(portfolios[p1]^portfolios[p2]);
+           }
         }
         
         List<Integer> binaryList = new ArrayList();
@@ -34,10 +28,6 @@ public class Question1 {
         }
         int indexMerge = (int) Math.sqrt(portfolios.length - 1);
         
-<<<<<<< refs/remotes/heroku/master
-        // Modify the finalList to return every value as 16 bit binary and display the value in final output
-=======
->>>>>>> Q1
         int findingLargest = 0;
         int largest = 0;
         for (int x = 0; x <= indexMerge - 1; x ++) {
