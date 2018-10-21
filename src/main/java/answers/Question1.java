@@ -36,7 +36,7 @@ public class Question1 {
         
         //Get the largest merged protfolio
         Arrays.sort(finalOutput);
-        return finalOutput[indexMerge - 1] ? finalOutput[indexMerge - 1] : -1;
+        return finalOutput[indexMerge - 1];
     }
     
     public static int[][] toBinary(int[] portfolios) {
