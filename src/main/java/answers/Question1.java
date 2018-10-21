@@ -10,7 +10,6 @@ public class Question1 {
            for(int p2=p1+1; p2<portfolios.length; p1++) {
                FinalPortfolio.add(portfolios[p1]^portfolios[p2]);
            }
-<<<<<<< HEAD
         }
         
         List<Integer> binaryList = new ArrayList();
@@ -48,9 +47,5 @@ public class Question1 {
         }
       
         return largest;
-=======
-        }
-        return Collections.max(FinalPortfolio);
->>>>>>> master
     }
 }
