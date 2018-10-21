@@ -18,7 +18,6 @@ public class Question1 {
             }
         }
         
-        // Merge all the portfolios with another
         List<Integer> binaryList = new ArrayList();
         List<Integer> finalList = new ArrayList();
         for (int z = 0; z <= portfolios.length - 1; z++) {
@@ -35,7 +34,10 @@ public class Question1 {
         }
         int indexMerge = (int) Math.sqrt(portfolios.length - 1);
         
+<<<<<<< refs/remotes/heroku/master
         // Modify the finalList to return every value as 16 bit binary and display the value in final output
+=======
+>>>>>>> Q1
         int findingLargest = 0;
         int largest = 0;
         for (int x = 0; x <= indexMerge - 1; x ++) {
