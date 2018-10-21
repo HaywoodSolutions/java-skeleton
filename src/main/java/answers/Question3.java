@@ -30,5 +30,6 @@ public class Question3 {
         return total;
 	}
 
+  
 }
 
