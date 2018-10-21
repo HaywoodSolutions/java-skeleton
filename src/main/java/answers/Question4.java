@@ -22,5 +22,4 @@ public class Question4 {
             }
         return total != 200000000 ? total : 0;
     }
-
 }
