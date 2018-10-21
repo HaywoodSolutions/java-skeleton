@@ -9,6 +9,7 @@ public class Question2 {
         int total=0;
         int diff= 999999999;
         int n = cashflowIn.length;
+        // Helped by https://www.geeksforgeeks.org/finding-all-subsets-of-a-given-set-in-java/
         for (int i = 0; i < (1 << n); i++) { // loop tough all 2^n subsets one by one 
             for (int j = 0; j < n; j++)
                 if ((i & (1 << j)) > 0)
