@@ -1,22 +1,18 @@
 package answers;
 import java.util.Collections;
 import java.util.ArrayList;
+import java.util.List;
 
 public class Question1 {
     
-    public static int bestMergedPortfolio(int[] portfolios) {
-        ArrayList<Integer> finalPortfolio = new ArrayList<Integer>();
-        for(int p1=0; p1<portfolios.length; p1++) {
-           for(int p2=p1+1; p2<portfolios.length; p1++) {
-               finalPortfolio.add(portfolios[p1]^portfolios[p2]);
-           }
-        }
+   public static int bestMergedPortfolio(int[] portfolios) {
+        int[][] finalPortfolio = new int[portfolios.length][32];
         
         List<Integer> binaryList = new ArrayList();
         List<Integer> finalList = new ArrayList();
         for (int z = 0; z <= portfolios.length - 1; z++) {
             for (int y = portfolios.length - 1; y >= 0; y--) {
-                for (int i = 0; i <= 15 ; i++) {
+                for (int i = 0; i <= 31 ; i++) {
                     if ((finalPortfolio[z][i] == finalPortfolio[y][i]) && ((finalPortfolio[z][i] == 1) || (finalPortfolio[y][i] == 0))){
                         binaryList.add(0);
                     } else {
