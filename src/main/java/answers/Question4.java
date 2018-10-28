@@ -1,25 +1,36 @@
 package answers;
 
-public class Question4 {
+import java.util.Arrays;
+import java.util.ArrayList;
+import java.util.List;
 
-	public static int selectionFailedTradedesks(String[][] rows, int numberMachines) {
-        int total = 200000000;
+public class Question4 {
+    public static int selectionFailedTradedesks(String[][] rows, int numberMachines) {
+      System.out.println("Q4: " + numberMachines + " " + rows);
+        int total = Integer.MAX_VALUE;
         int subTotal = 0;
-        for (int row = 0; row < rows.length; row++)
-            for (int sub = 0; sub < rows[row].length - numberMachines; sub++) {
-                subloop :
-                for (int m = sub; m < sub + numberMachines; m++) {
-                    if (rows[row][m] != "X") {
-                        subTotal += Integer.parseInt(rows[row][m]);
-                    } else {
-                        subTotal = -1;
-                        break subloop;
-                    }
-                }       
-                if (subTotal < total && subTotal != -1) 
-                    total = subTotal;
-                subTotal = 0;
+        List<String> array;
+        int arraySum;
+        for (int row = 0; row < rows.length; row++) {
+            array = Arrays.asList(rows[row]);
+            int index = 0;
+            while (index < array.size() - numberMachines) {
+                if (!array.subList(index, index + numberMachines).contains("X")) {
+                    arraySum = sum(array.subList(index, index + numberMachines));
+                    if (arraySum < total)
+                        total = arraySum;
+                } else row += array.subList(index, index + numberMachines).lastIndexOf("X");
+                index++;
             }
-        return total != 200000000 ? total : 0;
+        }
+        
+        return (total == Integer.MAX_VALUE) ? 0 : total;
+    }
+    
+    public static int sum(List<String> list) {
+         int sum = 0; 
+         for (String i : list)
+             sum = sum + Integer.parseInt(i);    
+         return sum;
     }
 }
