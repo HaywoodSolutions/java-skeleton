@@ -1,32 +1,23 @@
 package answers;
 
-import java.util.Map;
-import java.util.HashMap;
-
 public class Question5 {
-    public static int shareExchange(int[] allowedAllocations, int totalValue) {
-        Map<Integer, Integer> map = new HashMap<>();
-        return findMin(totalValue, allowedAllocations, map);
+    public static int[][] change_making(int[] set_of_coins, int total) {
+        int[][] m = new int[set_of_coins.length + 1][total + 1];
+        for (int i=0; i < total + 1; i++)
+            m[0][i] = i;
+        return m;
     }
-    
-    public static int findMin(int total, int coins[], Map<Integer, Integer> map) {
-        if (total == 0)
-            return 0;
 
-        if (map.containsKey(total))
-            return map.get(total);
-
-        int min = Integer.MAX_VALUE;
-        for (int i=0; i < coins.length; i++) {
-            if(coins[i] > total)
-                continue;
-            int val = findMin(total - coins[i], coins, map);
-            if( val < min )
-                min = val;
-        }
-
-        min =  (min == Integer.MAX_VALUE ? min : min + 1);
-        map.put(total, min);
-        return min;
+    public static int shareExchange(int[] coins, int total) {
+        int[][] m = change_making(coins, total);
+        for (int c=1; c< coins.length + 1; c++)
+            for (int r=1; r<total + 1; r++)
+                if (coins[c - 1] == r) {
+                    m[c][r] = 1;
+                } else if (coins[c - 1] > r) {
+                    m[c][r] = m[c - 1][r];
+                } else
+                    m[c][r] = Math.min(m[c - 1][r], 1 + m[c][r - coins[c - 1]]);
+        return m[m.length - 1][m[m.length - 1].length - 1];
     }
 }
