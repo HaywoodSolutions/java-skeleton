@@ -1,3 +1,6 @@
+import java.util.Collections;
+import java.util.Arrays;
+
 package answers;
 
 public class Question5 {
@@ -8,6 +11,10 @@ public class Question5 {
         int newNodesLength = allowedAllocations.length;
         int pass = 1;
         
+        Integer[] allowedAllocations2 = Arrays.stream( allowedAllocations ).boxed().toArray( Integer[]::new );
+        Arrays.sort(allowedAllocations2, Collections.reverseOrder());
+        
+        Arrays.sort(allowedAllocations, Collections.reverseOrder());
         for (int i=0; i<allowedAllocations.length; i++) {
             if (totalValue == allowedAllocations[i]) {
                 return pass;
