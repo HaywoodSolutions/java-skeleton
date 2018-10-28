@@ -48,7 +48,4 @@ public class Question3 {
         X = X / 2;
         return X + X - numNodes;
 	}
-
-  
 }
-
