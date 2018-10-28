@@ -6,7 +6,6 @@ import java.util.List;
 
 public class Question4 {
     public static int selectionFailedTradedesks(String[][] rows, int numberMachines) {
-      System.out.println("Q4: " + numberMachines + " " + rows);
         int total = Integer.MAX_VALUE;
         int subTotal = 0;
         List<String> array;
