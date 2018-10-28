@@ -1,43 +1,43 @@
 package answers;
 
+import java.util.ArrayList;
 import java.util.Collections;
-import java.util.Arrays;
 
 public class Question5 {
 
 	public static int shareExchange(int[] allowedAllocations, int totalValue) {
-		int[] nodes = new int[allowedAllocations.length];
-        int[] newNodes;
-        int newNodesLength = allowedAllocations.length;
+		ArrayList<Integer> changeList = new ArrayList<Integer>();
+        for (int change : allowedAllocations) {
+            if (change == totalValue) {
+                return 1;
+            } else if (totalValue > change)
+                changeList.add(change);
+        }
+        changeList.sort(Collections.reverseOrder());
+        
+        ArrayList<Integer> nodes = new ArrayList(changeList);
         int pass = 1;
-        
-        Integer[] allowedAllocations2 = Arrays.stream( allowedAllocations ).boxed().toArray( Integer[]::new );
-        Arrays.sort(allowedAllocations2, Collections.reverseOrder());
-        
-        Arrays.sort(allowedAllocations, Collections.reverseOrder());
-        for (int i=0; i<allowedAllocations.length; i++) {
-            if (totalValue == allowedAllocations[i]) {
-                return pass;
-            } else if (allowedAllocations[i] < totalValue) 
-                nodes[i] = allowedAllocations[i];
-        }
-        while (nodes.length > 0) {
-            newNodes = new int[(newNodesLength * allowedAllocations.length)];
-            newNodesLength = 0;
-            for (int a=0; a<nodes.length; a++) {
-                for (int b=0; b<allowedAllocations.length; b++) {
-                    int total = nodes[a] + allowedAllocations[b];
-                    if (total == totalValue) {
-                        return pass + 1;
-                    } else if (total < totalValue) {
-                        newNodes[newNodesLength] = nodes[a] + allowedAllocations[b];
-                        newNodesLength++;
-                    }
-                }
-            }
-            nodes = newNodes;
+        int total;
+        System.out.println(changeList);
+        do {
             pass++;
-        }
+            for (int n = 0; n < nodes.size(); n++)
+                for (int c = 0; c < changeList.size(); c++) {
+                    total = nodes.get(n) + changeList.get(c);
+                    System.out.println(nodes.get(n) + " " + changeList.get(c) + " " + total +" "+ totalValue + " " + nodes.size());
+                    if (total == totalValue) {
+                        System.out.println("EQUALS");
+                        return pass;
+                    } else if (total < totalValue) {
+                        System.out.println("LESS");
+                        nodes.add(total);
+                    } else  {
+                        System.out.println("END NODE");
+                    }
+                
+                    nodes.remove(n);
+                }
+        } while (nodes.size() > 0);
         return -1;
 	}
 
