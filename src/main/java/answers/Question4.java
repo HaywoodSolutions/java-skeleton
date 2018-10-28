@@ -19,7 +19,7 @@ public class Question4 {
                     arraySum = sum(array.subList(index, index + numberMachines));
                     if (arraySum < total)
                         total = arraySum;
-                } else row += array.subList(index, index + numberMachines).lastIndexOf("X");
+                } else index += array.subList(index, index + numberMachines).lastIndexOf("X");
                 index++;
             }
         }
