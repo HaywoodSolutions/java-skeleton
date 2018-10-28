@@ -1,7 +1,7 @@
+package answers;
+
 import java.util.Collections;
 import java.util.Arrays;
-
-package answers;
 
 public class Question5 {
 
