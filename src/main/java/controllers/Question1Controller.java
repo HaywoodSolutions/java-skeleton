@@ -30,7 +30,7 @@ public class Question1Controller {
       FileWriter fstream = new FileWriter(System.currentTimeMillis() + "out.txt");
         BufferedWriter out = new BufferedWriter(fstream);
       for (Test<int[]> test : tests.getTests()) {
-      out.write(test.getInput());
+      out.write(test.getInput().toString());
       }
     //Close the output stream
     out.close();
