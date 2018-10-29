@@ -3,6 +3,7 @@ package answers;
 public class Question1 {
     
    public static int bestMergedPortfolio(int[] portfolios) {
+        System.out.println(portfolios);
         int currentTotal = 0;
         int total;
         String binaryTotal = "0000000000000000";
