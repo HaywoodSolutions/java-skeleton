@@ -26,17 +26,6 @@ public class Question1Controller {
 
 	@RequestMapping(path="/runq1", method=RequestMethod.POST)
 	public Answer[] question1(@RequestBody Tests<int[]> tests) {
-      
-      FileWriter fstream = new FileWriter(System.currentTimeMillis() + "out.txt");
-        BufferedWriter out = new BufferedWriter(fstream);
-      for (Test<int[]> test : tests.getTests()) {
-        for (int number : test.getInput())
-          out.write(number +" ");
-        out.write(" NEWLINE ");
-      }
-    //Close the output stream
-    out.close();
-		
 		List<Answer> answers = new ArrayList<Answer>();
 		
 		for (Test<int[]> test : tests.getTests()) {
@@ -44,6 +33,9 @@ public class Question1Controller {
 			final Test<int[]> currentTest = test;
 			
 			try {
+              
+        System.out.println(currentTest.getInput());
+		
 		
 				Future<TimedAnswer> future = executorService.submit(() -> {
 						long startTime = System.nanoTime();
