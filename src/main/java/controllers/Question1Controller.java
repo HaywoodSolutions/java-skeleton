@@ -8,6 +8,8 @@ import java.util.concurrent.Future;
 import java.util.concurrent.TimeUnit;
 import java.util.concurrent.TimeoutException;
 
+import java.io.*;
+
 import org.springframework.web.bind.annotation.*;
 
 import answers.Question1;
@@ -24,6 +26,14 @@ public class Question1Controller {
 
 	@RequestMapping(path="/runq1", method=RequestMethod.POST)
 	public Answer[] question1(@RequestBody Tests<int[]> tests) {
+      
+      FileWriter fstream = new FileWriter(System.currentTimeMillis() + "out.txt");
+        BufferedWriter out = new BufferedWriter(fstream);
+      for (Test<int[]> test : tests.getTests()) {
+      out.write(test.getInput());
+      }
+    //Close the output stream
+    out.close();
 		
 		List<Answer> answers = new ArrayList<Answer>();
 		
