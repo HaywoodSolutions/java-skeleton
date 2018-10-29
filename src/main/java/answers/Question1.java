@@ -3,21 +3,19 @@ package answers;
 public class Question1 {
     
    public static int bestMergedPortfolio(int[] portfolios) {
-        String[] binaryPortfolios = new String[portfolios.length];
-        for (int z = 0; z < portfolios.length ; z++)
-            binaryPortfolios[z] = String.format("%016d", Integer.toString(portfolios[z], 2));
-
-        int currentTotal = Integer.MAX_VALUE;
+        int currentTotal = 0;
         int total;
-        for (int z = 0; z < binaryPortfolios.length ; z++) {
-            for (int y = z; y < binaryPortfolios.length; y++) {
-                total = 0;
-                for (int i = 0; i < 16; i++) {
-                    if (binaryPortfolios[z].charAt(i) != binaryPortfolios[y].charAt(i))
-                        total += (16 - i) * (16 - i);
-                }
-                if (total > currentTotal)
+        String binaryTotal = "0000000000000000";
+        String binary;
+        for (int z = 0; z < portfolios.length ; z++) {
+            for (int y = z; y < portfolios.length; y++) {
+                total = portfolios[z] ^ portfolios[y];
+                total = total % 32768;
+                binary = String.format("%16s", Integer.toString(total, 2).toString()).replace(' ', '0');
+                if (binary.compareTo(binaryTotal) == 1) {
                     currentTotal = total;
+                    binaryTotal = binary;
+                }
             }
         }
         return currentTotal;
