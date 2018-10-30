@@ -5,7 +5,6 @@ import java.util.Arrays;
 public class Question1 {
   
    public static int bestMergedPortfolio(int[] portfolios) {
-        System.out.println(Arrays.toString(portfolios));
         int currentTotal = 0;
         int total;
         String binaryTotal = "0000000000000000";
@@ -15,6 +14,8 @@ public class Question1 {
                 total = portfolios[z] ^ portfolios[y];
                 total = total % 32768;
                 binary = String.format("%16s", Integer.toString(total, 2).toString()).replace(' ', '0');
+                if (binary.length() > 16)
+                    binary.substring(binary.length() - 1 - 16, binary.length());
                 if (binary.compareTo(binaryTotal) == 1) {
                     currentTotal = total;
                     binaryTotal = binary;
@@ -23,4 +24,5 @@ public class Question1 {
         }
         return currentTotal;
     }
+  
 }
