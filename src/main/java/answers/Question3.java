@@ -41,9 +41,10 @@ public class Question3 {
                 chainId = 0;
                 repeat = false;
             }
-      
-                for (int[] chain: chains)
-        System.out.println(Arrays.toString(chain));
+      String str;
+      for (int[] chain: chains)
+          str += Arrays.toString(chain);
+      System.out.println(str);
         
       for (int c1=1; c1 < chains.length; c1++)
           if (chains[c1] != null)
