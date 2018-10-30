@@ -44,7 +44,7 @@ In order to submit your code to the Automated Evaluator, it first needs to be de
 2) Add files to be deployed to Heroku using <code>git add "file-name"</code> 
 3) Commit the files for deployment using <code>git commit -m "Your commit message here"</code>
 4) Deploy to Heroku using <code>git push heroku master</code> (Please note, this doesn't push to your original repository, so remember to push your changes there as well frequently).
-5) Your solution will be deployed to Heroku. You can see the logs to your server using <code>heroku logs --tail</code>
+5) Your solution will be deployed to Heroku. You can see the logs to your server using <code>heroku logs --source app -n 1500</code>
 
 <b>Please note - for your solution to be considered valid, you must grant access to your Heroku server to coding.challenge@credit-suisse.com</b>. This can be done on the Heroku website.
 

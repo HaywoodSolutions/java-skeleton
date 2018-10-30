@@ -32,10 +32,7 @@ public class Question1Controller {
 			
 			final Test<int[]> currentTest = test;
 			
-			try {
-              
-        System.out.println(currentTest.getInput());
-		
+			try {	
 		
 				Future<TimedAnswer> future = executorService.submit(() -> {
 						long startTime = System.nanoTime();

@@ -1,9 +1,11 @@
 package answers;
 
+import java.util.Arrays;
+
 public class Question1 {
-    
+  
    public static int bestMergedPortfolio(int[] portfolios) {
-        System.out.println(portfolios);
+        System.out.println(Arrays.toString(portfolios));
         int currentTotal = 0;
         int total;
         String binaryTotal = "0000000000000000";
