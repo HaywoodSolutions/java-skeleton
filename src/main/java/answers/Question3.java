@@ -62,7 +62,7 @@ public class Question3 {
                           chains[c2] = null;
                       }
           
-      
+        System.out.println(chains.length);
         int X = 0;
         for (int e=0; e < chains.length; e++)
             if (chains[e] != null)
