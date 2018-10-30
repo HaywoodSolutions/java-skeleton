@@ -4,6 +4,7 @@ import java.util.LinkedList;
 import java.util.Arrays;
 
 public class Question6 {
+  
     public static int shortestServerRoute(int numServers, int targetServer, int[][] times) {
         int noServers = numServers;
         int node = 0;
@@ -36,4 +37,5 @@ public class Question6 {
         }
         return result[targetServer];
     }
+  
 }
