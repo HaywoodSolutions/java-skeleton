@@ -15,7 +15,7 @@ public class Question1 {
                 total = total % 32768;
                 binary = String.format("%16s", Integer.toString(total, 2).toString()).replace(' ', '0');
                 if (binary.length() > 16)
-                    binary.substring(binary.length() - 1 - 16, binary.length());
+                    binary.substring(binary.length() - 1 - 16, binary.length() - 1);
                 if (binary.compareTo(binaryTotal) == 1) {
                     currentTotal = total;
                     binaryTotal = binary;
