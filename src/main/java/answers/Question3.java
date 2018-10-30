@@ -41,7 +41,7 @@ public class Question3 {
                 chainId = 0;
                 repeat = false;
             }
-      String str;
+      String str = "";
       for (int[] chain: chains)
           str += Arrays.toString(chain);
       System.out.println(str);
