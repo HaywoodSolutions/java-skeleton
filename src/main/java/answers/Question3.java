@@ -70,6 +70,6 @@ public class Question3 {
                     X = chains[e][2];
                 
         X = X / 2;
-        return X + X - numNodes;
+        return X + (X - numNodes);
 	}
 }

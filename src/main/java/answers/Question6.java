@@ -14,7 +14,7 @@ public class Question6 {
             int dijk_node = 0;
             int minTime = -1;
             for (int j=0; j<noServers; j++)
-                if (times[node][j] != -1 && node != j)
+                if (times[node][j] != -1 && node != j) //out of bounds
                     if (minTime == -1) {
                         minTime = times[node][j];
                         dijk_node = j;
