@@ -1,35 +1,52 @@
 package answers;
 
-import java.util.Arrays;
-import java.util.ArrayList;
-import java.util.List;
-
 public class Question4 {
     public static int selectionFailedTradedesks(String[][] rows, int numberMachines) {
-        int total = Integer.MAX_VALUE;
-        int subTotal = 0;
-        List<String> array;
-        int arraySum;
-        for (int row = 0; row < rows.length; row++) {
-            array = Arrays.asList(rows[row]);
+        int time = Integer.MAX_VALUE;
+
+        if (numberMachines == 1) {
+            for (int r = 0; r < rows.length; r++)
+                for (int i = 0; i < rows[r].length; i++)
+                    if (!rows[r][i].equals("X"))
+                        time = Math.min(time, Integer.valueOf(rows[r][i]));
+            return time;
+        }
+        
+        for (int r = 0; r < rows.length; r++) {
             int index = 0;
-            while (index < array.size() - numberMachines) {
-                if (!array.subList(index, index + numberMachines).contains("X")) { // has to index pf -2
-                    arraySum = sum(array.subList(index, index + numberMachines));
-                    if (arraySum < total)
-                        total = arraySum;
-                } else index += array.subList(index, index + numberMachines).lastIndexOf("X");
-                index++;
+            int sum = 0;
+            int count = 0;
+
+            breakFor: {
+                for (int i = 0; i < rows[r].length; i++)
+                    if (rows[r][i].equals("X")) {
+                        if ((rows[r].length - (i+1)) < numberMachines)
+                            break breakFor;
+                        
+                        sum = 0;
+                        index = 0;
+                        count = 0;
+                    } else {
+                        if (count == 0) {
+                            sum = Integer.valueOf(rows[r][i]);
+                            index = i;
+                            count++;
+                        } else if (count + 1 == numberMachines) {
+                            sum += Integer.valueOf(rows[r][i]);
+                            time = Math.min(time, sum);
+                            sum -= Integer.valueOf(rows[r][index]);
+                            index++;
+                        } else {
+                            sum += Integer.valueOf(rows[r][i]);
+                            count++;
+                        }
+                    }
             }
         }
         
-        return (total == Integer.MAX_VALUE) ? 0 : total;
-    }
-    
-    public static int sum(List<String> list) {
-         int sum = 0; 
-         for (String i : list)
-             sum = sum + Integer.parseInt(i);    
-         return sum;
+        if (time == Integer.MAX_VALUE)
+            time = 0;
+            
+        return time;
     }
 }
