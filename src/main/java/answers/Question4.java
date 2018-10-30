@@ -14,7 +14,7 @@ public class Question4 {
             array = Arrays.asList(rows[row]);
             int index = 0;
             while (index < array.size() - numberMachines) {
-                if (!array.subList(index, index + numberMachines).contains("X")) {
+                if (!array.subList(index, index + numberMachines).contains("X")) { // has to index pf -2
                     arraySum = sum(array.subList(index, index + numberMachines));
                     if (arraySum < total)
                         total = arraySum;

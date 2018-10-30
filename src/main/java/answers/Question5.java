@@ -2,6 +2,7 @@ package answers;
 
 public class Question5 {
     public static int[][] change_making(int[] set_of_coins, int total) {
+      //line 6 has negative index
         int[][] m = new int[set_of_coins.length + 1][total + 1];
         for (int i=0; i < total + 1; i++)
             m[0][i] = i;
