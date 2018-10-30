@@ -42,8 +42,8 @@ public class Question3 {
                 repeat = false;
             }
       
-                
-        System.out.println(Arrays.toString(chains.length));
+                for (int[] chain: chains)
+        System.out.println(Arrays.toString(chain));
         
       for (int c1=1; c1 < chains.length; c1++)
           if (chains[c1] != null)
