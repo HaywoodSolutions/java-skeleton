@@ -2,8 +2,6 @@ package answers;
 
 import helpers.Edge;
 
-import java.util.Arrays;
-
 public class Question3 {
 
 	public static int lowestExposureToExchanges(int numNodes, Edge[] edgeList) {
@@ -21,7 +19,7 @@ public class Question3 {
             for (int nodeB=nodeA; nodeB <= numNodes; nodeB++) {
                 do {
                     repeat = false;
-                    if (!nodes[nodeA - 1][nodeB - 1] && nodeA != nodeB) {
+                    if (!nodes[nodeA - 1][nodeB - 1]) {
                         if (chains[chainId][2] == 0) {
                             chains[chainId][0] = nodeA;
                             chains[chainId][1] = nodeB;
@@ -41,11 +39,6 @@ public class Question3 {
                 chainId = 0;
                 repeat = false;
             }
-      String str = "";
-      for (int[] chain: chains)
-          str += Arrays.toString(chain);
-      System.out.println(str);
-      
         
       for (int c1=1; c1 < chains.length; c1++)
           if (chains[c1] != null)
@@ -68,6 +61,8 @@ public class Question3 {
                           chains[c1][2] += chains[c2][2] - 1;
                           chains[c2] = null;
                       }
+          
+      
         int X = 0;
         for (int e=0; e < chains.length; e++)
             if (chains[e] != null)
@@ -75,6 +70,7 @@ public class Question3 {
                     X = chains[e][2];
                 
         X = X / 2;
-        return X + (X - numNodes);
+        return X + X - numNodes;
 	}
+  
 }

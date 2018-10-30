@@ -8,8 +8,8 @@ public class Question2 {
 	public static int equallyBalancedCashFlow(int[] cashflowIn, int[] cashflowOut) {
         ArrayList<Integer> cashIn = subArraySums(cashflowIn);
         ArrayList<Integer> cashOut = subArraySums(cashflowOut);
-        int cashInNo = cashIn.size();
-        int cashOutNo = cashOut.size();
+        final int cashInNo = cashIn.size();
+        final int cashOutNo = cashOut.size();
 
         int leastDiff = Math.min(cashIn.get(1), cashOut.get(1));
 
@@ -29,8 +29,7 @@ public class Question2 {
         int subSumArr[];
         
         int sum = 0;
-        for (int value : cashFlow)
-            sum += value;
+        for (int value : cashFlow) sum += value;
 
         ArrayList<Integer> sumList = new ArrayList<Integer>();
         int[] list = new int[sum + 1];
@@ -41,8 +40,8 @@ public class Question2 {
                 list[j] += list[j - cashFlow[i]];
 
         for (int i = 0; i <= sum; i++)
-            if (list[i] > 0)
-                sumList.add(i);
+            if (list[i] > 0) 
+              sumList.add(i);
 
         return sumList;
     }
