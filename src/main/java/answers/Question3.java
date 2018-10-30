@@ -21,7 +21,7 @@ public class Question3 {
             for (int nodeB=nodeA; nodeB <= numNodes; nodeB++) {
                 do {
                     repeat = false;
-                    if (!nodes[nodeA - 1][nodeB - 1]) {
+                    if (!nodes[nodeA - 1][nodeB - 1] && nodeA != nodeB) {
                         if (chains[chainId][2] == 0) {
                             chains[chainId][0] = nodeA;
                             chains[chainId][1] = nodeB;
