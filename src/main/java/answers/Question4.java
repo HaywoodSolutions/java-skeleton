@@ -26,20 +26,18 @@ public class Question4 {
                         sum = 0;
                         index = 0;
                         count = 0;
+                    } else if (count == 0) {
+                        sum = Integer.valueOf(rows[r][i]);
+                        index = i;
+                        count++;
+                    } else if (count + 1 == numberMachines) {
+                        sum += Integer.valueOf(rows[r][i]);
+                        time = Math.min(time, sum);
+                        sum -= Integer.valueOf(rows[r][index]);
+                        index++;
                     } else {
-                        if (count == 0) {
-                            sum = Integer.valueOf(rows[r][i]);
-                            index = i;
-                            count++;
-                        } else if (count + 1 == numberMachines) {
-                            sum += Integer.valueOf(rows[r][i]);
-                            time = Math.min(time, sum);
-                            sum -= Integer.valueOf(rows[r][index]);
-                            index++;
-                        } else {
-                            sum += Integer.valueOf(rows[r][i]);
-                            count++;
-                        }
+                        sum += Integer.valueOf(rows[r][i]);
+                        count++;
                     }
             }
         }
