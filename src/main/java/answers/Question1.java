@@ -8,7 +8,7 @@ public class Question1 {
         int max = 0;
         for (int i=0; i<n; i++)
             for (int j=i+1; j<=n; j++) {
-                total = (int) (portfolios[i] ^ portfolios[y]);              
+                total = (int) (portfolios[i] ^ portfolios[j]);              
                 if (max<total) max = total;
             }
         return max;
