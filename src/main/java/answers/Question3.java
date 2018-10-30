@@ -40,10 +40,34 @@ public class Question3 {
                 repeat = false;
             }
         
+      for (int c1=1; c1 < chains.length; c1++)
+          if (chains[c1] != null)
+              for (int c2=0; c2 < c1; c2++)
+                  if (chains[c2] != null)
+                      if (chains[c1][0] == chains[c2][0]) {
+                          chains[c1][0] = chains[c2][1];
+                          chains[c1][2] += chains[c2][2] - 1;
+                          chains[c2] = null;
+                      } else if (chains[c1][0] == chains[c2][1]) {
+                          chains[c1][0] = chains[c2][0];
+                          chains[c1][2] += chains[c2][2] - 1;
+                          chains[c2] = null;
+                      } else if (chains[c1][1] == chains[c2][0]) {
+                          chains[c1][1] = chains[c2][1];
+                          chains[c1][2] += chains[c2][2] - 1;
+                          chains[c2] = null;
+                      } else if (chains[c1][1] == chains[c2][1]) {
+                          chains[c1][1] = chains[c2][0];
+                          chains[c1][2] += chains[c2][2] - 1;
+                          chains[c2] = null;
+                      }
+          
+      
         int X = 0;
         for (int e=0; e < chains.length; e++)
-            if (chains[e][2] > X)
-                X = chains[e][2];
+            if (chains[e] != null)
+                if (chains[e][2] > X)
+                    X = chains[e][2];
                 
         X = X / 2;
         return X + X - numNodes;
