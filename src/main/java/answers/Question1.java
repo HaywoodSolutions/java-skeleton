@@ -11,7 +11,7 @@ public class Question1 {
             for (int j = i + 1; j < n; j++) {
                 total = portfolios[i] ^ portfolios[j];
                 if (total > max)
-                    max = total;
+                  max = total;
             }
      
         return max;

@@ -22,7 +22,6 @@ public class Question4 {
                     if (rows[r][i].equals("X")) {
                         if ((rows[r].length - (i+1)) < numberMachines)
                             break breakFor;
-                        
                         sum = 0;
                         index = 0;
                         count = 0;
@@ -42,9 +41,6 @@ public class Question4 {
             }
         }
         
-        if (time == Integer.MAX_VALUE)
-            time = 0;
-            
-        return time;
+        return (time == Integer.MAX_VALUE) ? 0 : time;
     }
 }
