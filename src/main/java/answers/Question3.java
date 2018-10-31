@@ -15,7 +15,7 @@ public class Question3 {
             nodes[edgeList[e].getEdgeA() - 1][edgeList[e].getEdgeB() - 1] = true;
             nodes[edgeList[e].getEdgeB() - 1][edgeList[e].getEdgeA() - 1] = true;
         }
-        System.out.println(numNodes, str);
+        System.out.println(numNodes+ " "+ str);
   
         boolean repeat;
         for (int nodeA = 1; nodeA <= numNodes; nodeA++)
