@@ -11,7 +11,7 @@ public class Question3 {
         
         String str = "";
         for (int e=0; e < edgeList.length; e++) {
-            str += "["+edgeList[e].getEdgeA() - 1 + "," + edgeList[e].getEdgeB() - 1+"]";
+            str += "["+(edgeList[e].getEdgeA() - 1) + "," +( edgeList[e].getEdgeB() - 1)+"]";
             nodes[edgeList[e].getEdgeA() - 1][edgeList[e].getEdgeB() - 1] = true;
             nodes[edgeList[e].getEdgeB() - 1][edgeList[e].getEdgeA() - 1] = true;
         }
