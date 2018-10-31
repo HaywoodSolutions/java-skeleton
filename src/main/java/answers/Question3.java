@@ -8,11 +8,9 @@ public class Question3 {
         if (edgeList == null || edgeList.length == 0)
             return 0;
       
-      
 		int chainId = 0;
         int[][] chains = new int[numNodes][3];
         boolean nodes[][] = new boolean[numNodes][numNodes];
-
         
         for (int e=0; e < edgeList.length; e++) {
             nodes[edgeList[e].getEdgeA() - 1][edgeList[e].getEdgeB() - 1] = true;
