@@ -5,17 +5,19 @@ import helpers.Edge;
 public class Question3 {
 
 	public static int lowestExposureToExchanges(int numNodes, Edge[] edgeList) {
+        if (edgeList == null || edgeList.length == 0)
+            return 0;
+      
+      
 		int chainId = 0;
         int[][] chains = new int[numNodes][3];
         boolean nodes[][] = new boolean[numNodes][numNodes];
+
         
-        String str = "";
         for (int e=0; e < edgeList.length; e++) {
-            str += "["+(edgeList[e].getEdgeA() - 1) + "," +( edgeList[e].getEdgeB() - 1)+"]";
             nodes[edgeList[e].getEdgeA() - 1][edgeList[e].getEdgeB() - 1] = true;
             nodes[edgeList[e].getEdgeB() - 1][edgeList[e].getEdgeA() - 1] = true;
         }
-        System.out.println(numNodes+ " "+ str);
   
         boolean repeat;
         for (int nodeA = 1; nodeA <= numNodes; nodeA++)
