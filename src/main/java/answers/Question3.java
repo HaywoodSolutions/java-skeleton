@@ -1,51 +1,53 @@
 package answers;
 
 import helpers.Edge;
-import java.util.Arrays;
 
 public class Question3 {
 
-	public static int minestExposureToExchanges(int numNodes, Edge[] edgeList) {
-        if (edgeList == null || edgeList.length == 0)
-            return 0;
-            
-        int[] nodeEdges = new int[numNodes + 1];
-        int noOfArcs = nodeEdges.length;
-
-        for (Edge e: edgeList) {
-            nodeEdges[e.getEdgeA()]++;
-            nodeEdges[e.getEdgeB()]++;
+	public static int lowestExposureToExchanges(int numNodes, Edge[] edgeList) {
+		int chainId = 0;
+        int[][] chains = new int[numNodes][3];
+        boolean nodes[][] = new boolean[numNodes][numNodes];
+        
+        for (int e=0; e < edgeList.length; e++) {
+            nodes[edgeList[e].getEdgeA() - 1][edgeList[e].getEdgeB() - 1] = true;
+            nodes[edgeList[e].getEdgeB() - 1][edgeList[e].getEdgeA() - 1] = true;
         }
-        
-        Arrays.sort(nodeEdges);
-        
-        return ((nodeEdges[1] == nodeEdges[numNodes]) && nodeEdges[numNodes] == 1) ? numNodes : 
-            count(nodeEdges, nodeEdges[1], noOfArcs) - count(nodeEdges, nodeEdges[numNodes], noOfArcs);
-    }
-
-    static int count(int[] arr, int x, int n) {
-        int i = first(arr, 0, n-1, x, n);
-        return (i == -1) ? -1 : last(arr, i, n-1, x, n) - i + 1;
-    }
-
-    static int first(int[] arr, int min, int max, int x, int n) {
-        if(max >= min) {
-            int middle = (min + max) / 2;
-            return ((middle == 0 || x > arr[middle - 1]) && arr[middle] == x) ? middle : 
-                (x > arr[middle]) ? first(arr, (middle + 1), max, x, n) : 
-                    first(arr, min, (middle - 1), x, n);
-        } else
-            return -1;
-    }
-
-    static int last(int[] arr, int min, int max, int x, int n) {
-        if(max >= min) {
-            int middle = (min + max) / 2;
-            return ((middle == n - 1 || x < arr[middle + 1]) && arr[middle] == x ) ? middle :
-                (x < arr[middle]) ? last(arr, min, (middle - 1), x, n) :
-                    last(arr, (middle + 1), max, x, n);
-        } else
-            return -1;
-    }
   
+        boolean repeat;
+        for (int nodeA = 1; nodeA <= numNodes; nodeA++)
+            for (int nodeB=nodeA; nodeB <= numNodes; nodeB++) {
+                do {
+                    repeat = false;
+                    if (!nodes[nodeA - 1][nodeB - 1]) {
+                        if (chains[chainId][2] == 0) {
+                            chains[chainId][0] = nodeA;
+                            chains[chainId][1] = nodeB;
+                            chains[chainId][2] += 2;
+                        } else if (nodeA == chains[chainId][0] || nodeB == chains[chainId][0]) {
+                            chains[chainId][0] = (nodeA == chains[chainId][0]) ? nodeB: nodeA;
+                            chains[chainId][2]++;
+                        } else if (nodeA == chains[chainId][1] || nodeB == chains[chainId][1]) {
+                            chains[chainId][1] = (nodeA == chains[chainId][1]) ? nodeB: nodeA;
+                            chains[chainId][2]++;
+                        } else {
+                            repeat = true;
+                            chainId++;
+                        }
+                    }
+                } while (repeat);
+                chainId = 0;
+                repeat = false;
+            }
+          
+      
+        int X = 0;
+        for (int e=0; e < chains.length; e++)
+            if (chains[e] != null)
+                if (chains[e][2] > X)
+                    X = chains[e][2];
+                
+        X = X / 2;
+        return X + X - numNodes;
+	}
 }
